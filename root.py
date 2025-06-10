@@ -1,15 +1,27 @@
 from flask import Flask
-
+from qdrant_client import QdrantClient
+from dotenv import load_dotenv
+import os
 app = Flask(__name__)
-
+load_dotenv()
 @app.route('/',methods=['GET'])
 def root():
-    return '<h1>App is running</h1>'
+    qdrant_client = QdrantClient(
+    url=os.getenv("QDRANT_URI"), 
+    api_key=os.getenv("QDRANT_API_KEY"),
+    )
+    return qdrant_client.get_collections()
 
 
-@app.route('/ingest/<index>',methods=['POST'])
+@app.route('/ingest/',methods=['POST'])
 def ingestDoc():
-    return '<h1>Feature is under development</h1>'
+
+    qdrant_client = QdrantClient(
+    url=os.getenv("QDRANT_URI"), 
+    api_key=os.getenv("QDRANT_API_KEY"),
+)
+
+    print(qdrant_client.get_collections())
 
 
 if __name__=='__main__':
