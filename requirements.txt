@@ -1,3 +1,4 @@
 flask
 qdrant_client
 python-dotenv
+pymupdf
