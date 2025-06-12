@@ -2,3 +2,8 @@ flask
 qdrant_client
 python-dotenv
 pymupdf
+langchain-community
+langchain
+python-dotenv
+qdrant_client
+fastembed
