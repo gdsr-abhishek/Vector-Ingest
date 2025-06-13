@@ -4,7 +4,12 @@ python-dotenv
 pymupdf
 langchain-community
 langchain
+langchain-openai
 python-dotenv
 qdrant_client
 fastembed
-glob
+glob2
+numpy
+scikit-learn
+plotly
+langchain-chroma
