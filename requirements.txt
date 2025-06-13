@@ -7,3 +7,4 @@ langchain
 python-dotenv
 qdrant_client
 fastembed
+glob
