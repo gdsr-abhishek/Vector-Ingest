@@ -3,3 +3,4 @@ aws
 .env
 __pycache__
 qdrant
+chroma.sqlite3

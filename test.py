@@ -37,19 +37,20 @@ print(f"dimensions: {len(sample_embedding)}")
 result = collection.get(include=["embeddings","documents","metadatas"])
 vectors= np.array(result["embeddings"])
 documents = result["documents"]
-tsne= TSNE(n_components=2 , random_state=42)
+tsne= TSNE(n_components=3 , random_state=42)
 rv= tsne.fit_transform(vectors)
-fig = go.Figure(data=[go.Scatter(
+fig = go.Figure(data=[go.Scatter3d(
 x=rv[:,0],
 y=rv[:,1],
+z=rv[:,2],
 mode="markers",
   marker=dict(size=5, opacity=0.8),
  text=[f"<br>Text: {d[:100]}..." for  d in documents],
  hoverinfo='text'
 )])
 fig.update_layout(
-    title='2D Chroma Vector Store Visualization',
-    scene=dict(xaxis_title='x',yaxis_title='y'),
+    title='3D Chroma Vector Store Visualization',
+    scene=dict(xaxis_title='x',yaxis_title='y',zaxis_title='z'),
     width=800,
     height=600,
     margin=dict(r=20, b=10, l=10, t=40)
