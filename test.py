@@ -33,4 +33,25 @@ print(f"Vectorstore created with {vectorstore._collection.count()} documents")
 collection = vectorstore._collection
 sample_embedding = collection.get(limit=1,include=["embeddings"])["embeddings"][0]
 print(f"dimensions: {len(sample_embedding)}")
-print(sample_embedding)
+# print(sample_embedding)
+result = collection.get(include=["embeddings","documents","metadatas"])
+vectors= np.array(result["embeddings"])
+documents = result["documents"]
+tsne= TSNE(n_components=2 , random_state=42)
+rv= tsne.fit_transform(vectors)
+fig = go.Figure(data=[go.Scatter(
+x=rv[:,0],
+y=rv[:,1],
+mode="markers",
+  marker=dict(size=5, opacity=0.8),
+ text=[f"<br>Text: {d[:100]}..." for  d in documents],
+ hoverinfo='text'
+)])
+fig.update_layout(
+    title='2D Chroma Vector Store Visualization',
+    scene=dict(xaxis_title='x',yaxis_title='y'),
+    width=800,
+    height=600,
+    margin=dict(r=20, b=10, l=10, t=40)
+)
+fig.show()
