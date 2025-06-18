@@ -13,3 +13,4 @@ numpy
 scikit-learn
 plotly
 langchain-chroma
+openai
