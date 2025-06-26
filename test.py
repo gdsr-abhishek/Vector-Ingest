@@ -57,10 +57,4 @@ embeddings=OpenAIEmbeddings(model="text-embedding-3-large")
 # )
 # fig.show()
 
-const openai = new OpenAI()
-const embedding = await openai.embeddings.create({
-  model: "text-embedding-3-small",
-  input: "Your text string goes here",
-  encoding_format: "float",
-});
 print(qdrant_client.get_collections())

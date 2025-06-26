@@ -4,3 +4,4 @@ aws
 __pycache__
 qdrant
 chroma.sqlite3
+jurisFiles
