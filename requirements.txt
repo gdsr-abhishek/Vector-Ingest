@@ -14,3 +14,4 @@ scikit-learn
 plotly
 langchain-chroma
 openai
+huggingface_hub
